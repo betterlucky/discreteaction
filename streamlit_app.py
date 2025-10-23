@@ -18,6 +18,7 @@ st.title("🧬 Harris & Bullock (2002) Coevolutionary Signalling Model")
 st.markdown("""
 This simulation models the coevolution of signallers and receivers in a communication game.
 Adjust parameters in the sidebar and run the simulation to see which strategies evolve under different cost conditions.
+Rewards are set to 100 (Signallers get a reward on receiving an UP, receivers get a reward on responding UP to HIGH state signallers and DOWN to LOW state signallers), the simulation will run through the grid of signalling costs from min to max.
 """)
 
 # Sidebar parameters
