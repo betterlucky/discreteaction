@@ -18,6 +18,9 @@ st.title("🧬 Harris & Bullock (2002) Coevolutionary Signalling Model")
 st.markdown("""
 This simulation models the coevolution of signallers and receivers in a communication game.
 Adjust parameters in the sidebar and run the simulation to see which strategies evolve under different cost conditions.
+Rewards for signaller's receiving an UP response set to 100, receivers get 100 for UPing a HIGH state signaller, 100 for DOWNing a LOW state signaller and 0 otherwise.
+
+The simulation will run through each potential signal cost value for HIGH state and LOW state signaller as a grid.
 """)
 
 # Sidebar parameters
@@ -30,9 +33,9 @@ mutation_rate = st.sidebar.slider("Mutation Rate", min_value=0.01, max_value=0.1
 tournament_size = st.sidebar.selectbox("Tournament Size", [2, 3, 4, 5], index=0)
 
 st.sidebar.header("Cost Grid Parameters")
-min_cost = st.sidebar.number_input("Minimum Cost", min_value=-500, max_value=0, value=-200, step=50)
-max_cost = st.sidebar.number_input("Maximum Cost", min_value=0, max_value=500, value=200, step=50)
-step_size = st.sidebar.number_input("Step Size", min_value=10, max_value=100, value=50, step=10)
+min_cost = st.sidebar.number_input("Signal Minimum Cost", min_value=-500, max_value=0, value=-200, step=50)
+max_cost = st.sidebar.number_input("Signal Maximum Cost", min_value=0, max_value=500, value=200, step=50)
+step_size = st.sidebar.number_input("Cost Step Size", min_value=10, max_value=100, value=50, step=25)
 
 levels = list(range(min_cost, max_cost + 1, step_size))
 
