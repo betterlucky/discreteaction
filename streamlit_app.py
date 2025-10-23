@@ -24,14 +24,14 @@ Adjust parameters in the sidebar and run the simulation to see which strategies 
 st.sidebar.header("Simulation Parameters")
 
 pop_size = st.sidebar.number_input("Population Size", min_value=10, max_value=500, value=100, step=10)
-generations = st.sidebar.number_input("Generations", min_value=100, max_value=5000, value=1000, step=100)
+generations = st.sidebar.number_input("Generations", min_value=100, max_value=5000, value=100, step=100)
 replicates = st.sidebar.number_input("Replicates per condition", min_value=1, max_value=50, value=20, step=1)
 mutation_rate = st.sidebar.slider("Mutation Rate", min_value=0.01, max_value=0.1, value=0.03, step=0.01)
 tournament_size = st.sidebar.selectbox("Tournament Size", [2, 3, 4, 5], index=0)
 
 st.sidebar.header("Cost Grid Parameters")
-min_cost = st.sidebar.number_input("Minimum Cost", min_value=-500, max_value=0, value=-200, step=50)
-max_cost = st.sidebar.number_input("Maximum Cost", min_value=0, max_value=500, value=200, step=50)
+min_cost = st.sidebar.number_input("Minimum Cost", min_value=-500, max_value=100, value=-150, step=50)
+max_cost = st.sidebar.number_input("Maximum Cost", min_value=-100, max_value=500, value=150, step=50)
 step_size = st.sidebar.number_input("Step Size", min_value=10, max_value=100, value=50, step=10)
 
 levels = list(range(min_cost, max_cost + 1, step_size))
