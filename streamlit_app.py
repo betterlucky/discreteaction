@@ -164,7 +164,9 @@ def create_heatmap(grid, strat, levels, replicates):
     return fig
 
 # Main app
-if st.button("🚀 Run Simulation", type="primary"):
+run_button = st.button("🚀 Run Simulation", type="primary")
+
+if run_button:
     st.markdown("---")
     
     # Progress tracking
@@ -177,6 +179,19 @@ if st.button("🚀 Run Simulation", type="primary"):
                                           mutation_rate, tournament_size, progress_bar, status_text)
     
     status_text.text("✅ Simulation complete!")
+    
+    # Store results in session state
+    st.session_state['s_positive'] = s_positive
+    st.session_state['r_positive'] = r_positive
+    st.session_state['levels'] = levels
+    st.session_state['replicates'] = replicates
+
+# Display results if they exist
+if 's_positive' in st.session_state:
+    s_positive = st.session_state['s_positive']
+    r_positive = st.session_state['r_positive']
+    levels = st.session_state['levels']
+    replicates = st.session_state['replicates']
     
     # Display results
     st.markdown("---")
@@ -232,7 +247,6 @@ if st.button("🚀 Run Simulation", type="primary"):
         st.markdown("**Sample: Believer Strategy**")
         df_believer = pd.DataFrame(r_positive["Believer"], index=levels, columns=levels)
         st.dataframe(df_believer)
-
 else:
     st.info("👈 Adjust parameters in the sidebar and click 'Run Simulation' to start")
     
